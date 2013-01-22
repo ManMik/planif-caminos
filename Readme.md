@@ -1,4 +1,7 @@
 ﻿# Planificación de caminos
+﻿
+﻿Realizado por https://github.com/recoletosmb y https://github.com/Miguelos
+
 ---
 
 ### Descripción
@@ -155,7 +158,3 @@ En este ejemplo podemos apreciar como el primer y segundo tramo tienen una traza
 En las gráfica de aceleración, las dos últimas, podemos apreciar que tanto en el sentido de las x como el de las y hay una gran aceleración y luego deceleración para cumplir la continuidad con el siguiente tramo
 
 De los movimientos anteriores, la mejor trayectoria la obtenemos con la primera prueba. La trayectoria es prácticamente paralela al camino que se forma entre los dos obstáculos. Con esta trayectoria podemos conseguir una mayor tranquilidad por el espacio que deja con los obstáculos el manipulador y dado el tiempo que le hemos dejado a este tramo (5 s) es más que una velocidad prudencial para transportar objetos entre esos obstáculos.
-
----
-
-Realizado por https://github.com/recoletosmb y https://github.com/Miguelos
