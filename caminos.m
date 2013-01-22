@@ -52,7 +52,7 @@ pX=M\Bx;
 % Ecuacion:  M*pY=By
 pY=M\By;
 
-% SOLUCI?N PARA CADA VARIABLE (X,Y)
+% SOLUCIÓN PARA CADA VARIABLE (X,Y)
 % Coeficientes de X e Y para las curvas 1 y 2:
 pX1=pX(1:5)
 pX2=pX(6:10)
