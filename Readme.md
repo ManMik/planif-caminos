@@ -14,7 +14,7 @@ Tramos del camino:
 * De p1 a p3 (pasando por el punto intermedio p2, situado a mitad del tiempo que durará el recorrido por este tramo)
 * De p3 a p4
 
-![mapa](./img/graficas/image23.png)
+![mapa](https://raw.github.com/Miguelos/planif-caminos/master/img/graficas/image23.png)
 
 Para el punto inicial y final tenemos posición velocidad y aceleración. Para p1 y p3 tenemos continuidad, posición, velocidad y aceleración. El punto p2 es un punto extra el cual queda a mitad del recorrido del 2º tramo. Para el punto 2 tenemos sólo su posición.
 
@@ -53,7 +53,7 @@ Punto final (p4)
 * Aceleración: a4 = 12*a34*t_F^2+ 6*a33t_F+ 2*a32
 
 En forma Matricial:
-![matriz](./img/formulas/image24.png)
+![matriz](https://raw.github.com/Miguelos/planif-caminos/master/img/formulas/image24.png)
 
 Con todas las ecuaciones descritas anteriormente se crea el archivo crea el programa camino.m donde se muestan las trayectorias de cada prueba que se realce. Para mayor comodidad, se introducen los datos de entrada a la función del siguiente modo:
 
@@ -98,6 +98,9 @@ tt3=2;
 
 #####Figuras
 
+![trayectoria](https://raw.github.com/Miguelos/planif-caminos/master/img/graficas/image19.png)
+![trayectoria](https://raw.github.com/Miguelos/planif-caminos/master/img/graficas/image22.png)
+
 Aquí apreciamos como la velocidad del tercer tramo pasa de ser muy alta a 0 rápidamente, por lo que la aceleración, sobre todo en el sentido de las x, es muy brusca.
 
 ####Prueba 2
@@ -120,6 +123,9 @@ tt3=2;
 
 #####Figuras
 
+![trayectoria](https://raw.github.com/Miguelos/planif-caminos/master/img/graficas/image20.png)
+![trayectoria](https://raw.github.com/Miguelos/planif-caminos/master/img/graficas/image17.png)
+
 Aquí el robot acelera y gana velocidad al final del segundo tramo para que haya continuidad. 
 También se aprecia como en el primer tramo la velocidad y la aceleración son muy suaves.
 
@@ -140,6 +146,9 @@ tt2=1;
 tt3=5;
 ```
 #####Figuras:
+
+![trayectoria](https://raw.github.com/Miguelos/planif-caminos/master/img/graficas/image18.png)
+![trayectoria](https://raw.github.com/Miguelos/planif-caminos/master/img/graficas/image21.png)
 
 En este ejemplo podemos apreciar como el primer y segundo tramo tienen una trazada mas suave ya que la velocidad en ambos es menor.
 
