@@ -1,6 +1,6 @@
 ﻿# Planificación de caminos
 ﻿
-﻿Realizado por https://github.com/recoletosmb y https://github.com/Miguelos
+﻿Realizado por [Manuel](https://github.com/recoletosmb) y [Miguel](https://github.com/Miguelos). [![endorse](http://api.coderwall.com/miguelos/endorsecount.png)](http://coderwall.com/miguelos)
 
 ---
 
@@ -35,9 +35,9 @@ Punto inicial (p0)
 
 Punto de despegue (p1)
 * Posición: ![p1 = a24t1^4+ a23t1^3 + a22t1^2 + a21t1+a20](http://latex.codecogs.com/gif.latex?p1=a_{24}*t_{0}^{4}+a_{23}*t_{0}^{3}+a_{22}*t_{0}^{2}+a_{21}*t_{0}+a_{20}) 
-* Continuidad Posición: a14*t1^4 + a13*t1^3+ a12*t1^2 + a11*t1 + a10 = a24* t1^4 + a23*t1^3 + a22*t12 + a21*t1 + a20
-* Continuidad Velocidad: 4*a14*t1^3 + 3*a13*t1^2 + 2*a12*t1 + a11 = 4*a24*t1^3+ 3*a23*t1^2 + 2*a22 +a21
-* Continuidad Aceleración: 12*a14*t1^2 + 6 *a13*t1+ 2*a12 =12*a24 + 6 *a23*t1+ 2*a22
+* Continuidad Posición: ![a14*t1^4 + a13*t1^3+ a12*t1^2 + a11*t1 + a10 = a24* t1^4 + a23*t1^3 + a22*t12 + a21*t1 + a20](http://latex.codecogs.com/gif.latex?a_{14}*t_{1}^{4}+a_{13}*t_{1}^{3}+a_{12}*t_{1}^{2}+a_{11}*t_{1}+a_{10}=a_{24}*t_{1}^{4}+a_{23}*t_{1}^{3}+a_{22}*t_{1}^{2}+a_{21}*t_{1}+a_{20})
+* Continuidad Velocidad: ![4*a14*t1^3 + 3*a13*t1^2 + 2*a12*t1 + a11 = 4*a24*t1^3+ 3*a23*t1^2 + 2*a22 +a21](http://latex.codecogs.com/gif.latex?4*a_{14}*t_{1}^{3}+3*a_{13}*t_{1}^{2}+2*a_{12}*t_{1}+a_{11}=4*a_{24}*t_{1}^{3}+3*a_{23}*t_{1}^{2}+2*a_{22}+a_{21})
+* Continuidad Aceleración: ![12*a14*t1^2 + 6 *a13*t1+ 2*a12 =12*a24 + 6 *a23*t1+ 2*a22](http://latex.codecogs.com/gif.latex?12*a_{14}*t_{1}^{2}+6*a_{13}*t_{1}+2*a_{12}=12*a_{24}+6*a_{23}*t_{1}+2*a_{22})
 
 Punto extra (p2)
 > La posición debe venir determinada por la curva 2, la aceleración y la velocidad, la marca la propia curva, no el punto en cuestión. El tiempo t2, ha de ser la mitad del tiempo del segundo tramo.
