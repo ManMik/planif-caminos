@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Planif-caminos by ManMik</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Planif-caminos</h1>
+        <p class="header">Planificación de caminos para robots móviles en lenguaje M.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/ManMik/planif-caminos/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/ManMik/planif-caminos/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/ManMik/planif-caminos">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/ManMik">ManMik</a></p>
+
+
+      </header>
+      <section>
+        <h1>Planificación de caminos</h1>
+
+<p>﻿
+﻿Realizado por <a href="https://github.com/recoletosmb">Manuel</a> y <a href="https://github.com/Miguelos">Miguel</a>. <a href="http://coderwall.com/miguelos"><img src="http://api.coderwall.com/miguelos/endorsecount.png" alt="endorse"></a></p>
+
+<hr><h3>Descripción</h3>
+
+<p>Planificación del camino de un robot móvil entre dos puntos pasando por un punto intermedio</p>
+
+<h3>Planteamiento</h3>
+
+<p>El programa calcula los coeficientes de los polinomios para que pasen por un punto inicial (p0), despegue (p1), intermedio (p2), asentamiento (p3) y final (p4). </p>
+
+<p>Tramos del camino:</p>
+
+<ul>
+<li>De p0 a p1</li>
+<li>De p1 a p3 (pasando por el punto intermedio p2, situado a mitad del tiempo que durará el recorrido por este tramo)</li>
+<li>De p3 a p4</li>
+</ul><p><img src="https://raw.github.com/ManMik/planif-caminos/master/img/graficas/image23.png" alt="mapa"></p>
+
+<p>Para el punto inicial y final tenemos posición velocidad y aceleración. Para p1 y p3 tenemos continuidad, posición, velocidad y aceleración. El punto p2 es un punto extra el cual queda a mitad del recorrido del 2º tramo. Para el punto 2 tenemos sólo su posición.</p>
+
+<p>Tenemos 3 segmentos = 3 (3+1) + 3 = 15 coeficientes. Se calcula la trayectoria con tres polinomios de grado 4 (4-4-4).</p>
+
+<p>Polinomios: </p>
+
+<ul>
+<li><img src="http://latex.codecogs.com/gif.latex?h1(t)=a_%7B14%7D*t_%7B0%7D%5E%7B4%7D+a_%7B13%7D*t_%7B0%7D%5E%7B3%7D+a_%7B12%7D*t_%7B0%7D%5E%7B2%7D+a_%7B11%7D*t_%7B0%7D+a_%7B10%7D" alt="h1(t) = a14t^4 + a13t^3 + a12t^2 + a11t+a10"></li>
+<li><img src="http://latex.codecogs.com/gif.latex?h2(t)=a_%7B24%7D*t_%7B0%7D%5E%7B4%7D+a_%7B23%7D*t_%7B0%7D%5E%7B3%7D+a_%7B22%7D*t_%7B0%7D%5E%7B2%7D+a_%7B21%7D*t_%7B0%7D+a_%7B20%7D" alt="h2(t) = a14t^4 + a13t^3 + a12t^2 + a11t+a10"></li>
+<li><img src="http://latex.codecogs.com/gif.latex?h3(t)=a_%7B34%7D*t_%7B0%7D%5E%7B4%7D+a_%7B33%7D*t_%7B0%7D%5E%7B3%7D+a_%7B32%7D*t_%7B0%7D%5E%7B2%7D+a_%7B31%7D*t_%7B0%7D+a_%7B30%7D" alt="h3(t) = a14t^4 + a13t^3 + a12t^2 + a11t+a10"></li>
+</ul><p>Punto inicial (p0)</p>
+
+<ul>
+<li>Posición: <img src="http://latex.codecogs.com/gif.latex?p0=a_%7B14%7D*t_%7B0%7D%5E%7B4%7D+a_%7B13%7D*t_%7B0%7D%5E%7B3%7D+a_%7B12%7D*t_%7B0%7D%5E%7B2%7D+a_%7B11%7D*t_%7B0%7D+a_%7B10%7D" alt="p0 = a14t0^4 + a13t0^3 + a12t0^2 + a11t0 + a10">
+</li>
+<li>Velocidad: <img src="http://latex.codecogs.com/gif.latex?v0=4*a_%7B14%7D*t_%7B0%7D%5E%7B3%7D+3*a_%7B13%7D*t_%7B0%7D%5E%7B2%7D+2*a_%7B12%7D*t_%7B0%7D+a_%7B12%7D*t_%7B0%7D+a_%7B11%7D" alt="v0 = 4*a14t0^3 + 3*a13t0^2 + 2*a12t0 + a11">
+</li>
+<li>Aceleración: <img src="http://latex.codecogs.com/gif.latex?a0=4*3*a_%7B14%7D*t_%7B0%7D%5E%7B2%7D+3*2*a_%7B13%7D*t_%7B0%7D+2*a_%7B12%7D" alt="a0 =4*3*a14t0^2 + 3*2*a13t0+ 2*a12">
+</li>
+</ul><p>Punto de despegue (p1)</p>
+
+<ul>
+<li>Posición: <img src="http://latex.codecogs.com/gif.latex?p1=a_%7B24%7D*t_%7B0%7D%5E%7B4%7D+a_%7B23%7D*t_%7B0%7D%5E%7B3%7D+a_%7B22%7D*t_%7B0%7D%5E%7B2%7D+a_%7B21%7D*t_%7B0%7D+a_%7B20%7D" alt="p1 = a24t1^4+ a23t1^3 + a22t1^2 + a21t1+a20">
+</li>
+<li>Continuidad Posición: <img src="http://latex.codecogs.com/gif.latex?a_%7B14%7D*t_%7B1%7D%5E%7B4%7D+a_%7B13%7D*t_%7B1%7D%5E%7B3%7D+a_%7B12%7D*t_%7B1%7D%5E%7B2%7D+a_%7B11%7D*t_%7B1%7D+a_%7B10%7D=a_%7B24%7D*t_%7B1%7D%5E%7B4%7D+a_%7B23%7D*t_%7B1%7D%5E%7B3%7D+a_%7B22%7D*t_%7B1%7D%5E%7B2%7D+a_%7B21%7D*t_%7B1%7D+a_%7B20%7D" alt="a14*t1^4 + a13*t1^3+ a12*t1^2 + a11*t1 + a10 = a24* t1^4 + a23*t1^3 + a22*t12 + a21*t1 + a20">
+</li>
+<li>Continuidad Velocidad: <img src="http://latex.codecogs.com/gif.latex?4*a_%7B14%7D*t_%7B1%7D%5E%7B3%7D+3*a_%7B13%7D*t_%7B1%7D%5E%7B2%7D+2*a_%7B12%7D*t_%7B1%7D+a_%7B11%7D=4*a_%7B24%7D*t_%7B1%7D%5E%7B3%7D+3*a_%7B23%7D*t_%7B1%7D%5E%7B2%7D+2*a_%7B22%7D+a_%7B21%7D" alt="4*a14*t1^3 + 3*a13*t1^2 + 2*a12*t1 + a11 = 4*a24*t1^3+ 3*a23*t1^2 + 2*a22 +a21">
+</li>
+<li>Continuidad Aceleración: <img src="http://latex.codecogs.com/gif.latex?12*a_%7B14%7D*t_%7B1%7D%5E%7B2%7D+6*a_%7B13%7D*t_%7B1%7D+2*a_%7B12%7D=12*a_%7B24%7D+6*a_%7B23%7D*t_%7B1%7D+2*a_%7B22%7D" alt="12*a14*t1^2 + 6 *a13*t1+ 2*a12 =12*a24 + 6 *a23*t1+ 2*a22">
+</li>
+</ul><p>Punto extra (p2)</p>
+
+<blockquote>
+<p>La posición debe venir determinada por la curva 2, la aceleración y la velocidad, la marca la propia curva, no el punto en cuestión. El tiempo t2, ha de ser la mitad del tiempo del segundo tramo.</p>
+
+<ul>
+<li>Posición: p2 = a24*t2^4 + a23*t2^3 + a22*t2^2 + a21*t2 + a20 </li>
+<li>Tiempo: t2 = (t3-t1)/2</li>
+</ul>
+</blockquote>
+
+<p>Punto de asentamiento (p3)</p>
+
+<ul>
+<li>Posición: p3 = a34*t3^4 + a33*t3^3 + a32*t3^2 + a31*t3 + a30</li>
+<li>Continuidad Posición: a24*t3^4 + a23*t3^3 + a22*t3^2 + a21*t3 + a20 = a34*t3^4 + a33*t3^3 + a32*t3^2 + a31*t3 + a30</li>
+<li>Continuidad Velocidad: 4*a24*t3^3 + 3*a23*t3^2 + 2*a22*t3+ a21 = 4*a34*t3^3 + 3*a33*t3^2 + 2*a32*t3+ a31</li>
+<li>Continuidad Aceleración:  12*a24*t3^2 + 6*a23*t3 + 2*a22 = 12*a34*t3^2 +6*a33*t3+ 2*a32</li>
+</ul><p>Punto final (p4)</p>
+
+<ul>
+<li>Posición: p4 = a34*t_F^4 + a33*tF_F^3 + a32*tF_F^2 + a31*t_F + a30 </li>
+<li>Velocidad: v4 = 4*a34*t_F^3 + 3*a33*t_F^2 + 2*a32*t_F + a31</li>
+<li>Aceleración: a4 = 12*a34*t_F^2+ 6*a33t_F+ 2*a32</li>
+</ul><p>En forma Matricial:
+<img src="https://raw.github.com/ManMik/planif-caminos/master/img/formulas/image24.png" alt="matriz"></p>
+
+<p>Con todas las ecuaciones descritas anteriormente se crea el archivo crea el programa camino.m donde se muestan las trayectorias de cada prueba que se realce. Para mayor comodidad, se introducen los datos de entrada a la función del siguiente modo:</p>
+
+<div class="highlight"><pre><span class="k">function</span><span class="w"> </span><span class="nf">practica3</span><span class="p">(</span>p0, p1, p2, p3, p4, tt1, tt2, tt3<span class="p">)</span><span class="w"></span>
+</pre></div>
+
+<blockquote>
+<p>p0: punto inicial.
+p1: punto despegue.
+p2: punto intermedio.
+p3: punto aproximación.
+p4: punto final.
+tt1: tiempo tramo 1.
+tt2: tiempo tramo 2.
+tt3: tiempo tramo 3.</p>
+
+<p>Los puntos se introducen en forma de par [X,Y]</p>
+</blockquote>
+
+<hr><h3>Pruebas</h3>
+
+<p>A continuación se muestran unas pruebas realizadas con la ejecución del programa para distintos parámetros de entrada. 
+En las figuras se aprecia la trayectoria del efector final del robot (colores rojo azul y amarillo) y los obstáculos (color negro). La línea verde alrededor de los objetos que representa el margen de distancia (0.8) que tiene que haber entre la trayectoria del robot y los obstáculos.</p>
+
+<h4>Prueba 1</h4>
+
+<p>Datos de entrada</p>
+
+<div class="highlight"><pre><span class="c">% Puntos </span>
+<span class="n">p0</span><span class="p">=[</span>13<span class="p">,</span>4<span class="p">];</span>
+<span class="n">p1</span><span class="p">=[</span>9<span class="p">.</span>5<span class="p">,</span>4<span class="p">.</span>3<span class="p">];</span>
+<span class="n">p2</span><span class="p">=[</span>8<span class="p">.</span>8<span class="p">,</span>7<span class="p">.</span>1<span class="p">];</span>
+<span class="n">p3</span><span class="p">=[</span>7<span class="p">.</span>2<span class="p">,</span>10<span class="p">.</span>4<span class="p">];</span>
+<span class="n">p4</span><span class="p">=[</span>4<span class="p">,</span>11<span class="p">];</span>
+
+<span class="c">% tiempo para cada segmento:</span>
+<span class="n">tt1</span><span class="p">=</span>5<span class="p">;</span>
+<span class="n">tt2</span><span class="p">=</span>5<span class="p">;</span>
+<span class="n">tt3</span><span class="p">=</span>2<span class="p">;</span>
+</pre></div>
+
+<h5>Figuras</h5>
+
+<p><img src="https://raw.github.com/ManMik/planif-caminos/master/img/graficas/image19.png" alt="trayectoria"><img src="https://raw.github.com/ManMik/planif-caminos/master/img/graficas/image22.png" alt="trayectoria"></p>
+
+<p>Aquí apreciamos como la velocidad del tercer tramo pasa de ser muy alta a 0 rápidamente, por lo que la aceleración, sobre todo en el sentido de las x, es muy brusca.</p>
+
+<h4>Prueba 2</h4>
+
+<p>Datos de entrada</p>
+
+<div class="highlight"><pre><span class="c">% Puntos objetivo:</span>
+<span class="n">p0</span><span class="p">=[</span>13<span class="p">,</span>4<span class="p">];</span>
+<span class="n">p1</span><span class="p">=[</span>9<span class="p">.</span>6<span class="p">,</span>4<span class="p">.</span>4<span class="p">];</span>
+<span class="n">p2</span><span class="p">=[</span>8<span class="p">.</span>5<span class="p">,</span>8<span class="p">];</span>
+<span class="n">p3</span><span class="p">=[</span>7<span class="p">.</span>3<span class="p">,</span>10<span class="p">.</span>4<span class="p">];</span>
+<span class="n">p4</span><span class="p">=[</span>4<span class="p">,</span>11<span class="p">];</span>
+
+<span class="c">% tiempo para cada segmento:</span>
+<span class="n">tt1</span><span class="p">=</span>7<span class="p">;</span>
+<span class="n">tt2</span><span class="p">=</span>5<span class="p">;</span>
+<span class="n">tt3</span><span class="p">=</span>2<span class="p">;</span>
+</pre></div>
+
+<h5>Figuras</h5>
+
+<p><img src="https://raw.github.com/ManMik/planif-caminos/master/img/graficas/image20.png" alt="trayectoria"><img src="https://raw.github.com/ManMik/planif-caminos/master/img/graficas/image17.png" alt="trayectoria"></p>
+
+<p>Aquí el robot acelera y gana velocidad al final del segundo tramo para que haya continuidad. 
+También se aprecia como en el primer tramo la velocidad y la aceleración son muy suaves.</p>
+
+<h4>Prueba 3</h4>
+
+<p>Datos de entrada</p>
+
+<div class="highlight"><pre><span class="c">% Puntos objetivo:</span>
+<span class="n">p0</span><span class="p">=[</span>13<span class="p">,</span>4<span class="p">];</span>
+<span class="n">p1</span><span class="p">=[</span>8<span class="p">.</span>5<span class="p">,</span>4<span class="p">.</span>4<span class="p">];</span>
+<span class="n">p2</span><span class="p">=[</span>8<span class="p">.</span>5<span class="p">,</span>8<span class="p">];</span>
+<span class="n">p3</span><span class="p">=[</span>7<span class="p">.</span>3<span class="p">,</span>11<span class="p">];</span>
+<span class="n">p4</span><span class="p">=[</span>4<span class="p">,</span>11<span class="p">];</span>
+
+<span class="c">% tiempo para cada segmento:</span>
+<span class="n">tt1</span><span class="p">=</span>4<span class="p">;</span>
+<span class="n">tt2</span><span class="p">=</span>1<span class="p">;</span>
+<span class="n">tt3</span><span class="p">=</span>5<span class="p">;</span>
+</pre></div>
+
+<h5>Figuras:</h5>
+
+<p><img src="https://raw.github.com/ManMik/planif-caminos/master/img/graficas/image18.png" alt="trayectoria"><img src="https://raw.github.com/ManMik/planif-caminos/master/img/graficas/image21.png" alt="trayectoria"></p>
+
+<p>En este ejemplo podemos apreciar como el primer y segundo tramo tienen una trazada mas suave ya que la velocidad en ambos es menor.</p>
+
+<p>En las gráfica de aceleración, las dos últimas, podemos apreciar que tanto en el sentido de las x como el de las y hay una gran aceleración y luego deceleración para cumplir la continuidad con el siguiente tramo</p>
+
+<p>De los movimientos anteriores, la mejor trayectoria la obtenemos con la primera prueba. La trayectoria es prácticamente paralela al camino que se forma entre los dos obstáculos. Con esta trayectoria podemos conseguir una mayor tranquilidad por el espacio que deja con los obstáculos el manipulador y dado el tiempo que le hemos dejado a este tramo (5 s) es más que una velocidad prudencial para transportar objetos entre esos obstáculos.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
