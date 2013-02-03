@@ -24,25 +24,26 @@ Para el punto inicial y final tenemos posición velocidad y aceleración. Para p
 Tenemos 3 segmentos = 3 (3+1) + 3 = 15 coeficientes. Se calcula la trayectoria con tres polinomios de grado 4 (4-4-4).
 
 Polinomios: 
-* ![h1(t) = a14t^4 + a13t^3 + a12t^2 + a11t+a10](http://latex.codecogs.com/gif.latex?h1(t\)=a_{14}*t_{0}^{4}+a_{13}*t_{0}^{3}+a_{12}*t_{0}^{2}+a_{11}*t_{0}+a_{10})
-* ![h2(t) = a14t^4 + a13t^3 + a12t^2 + a11t+a10](http://latex.codecogs.com/gif.latex?h2(t\)=a_{24}*t_{0}^{4}+a_{23}*t_{0}^{3}+a_{22}*t_{0}^{2}+a_{21}*t_{0}+a_{20})
-* ![h3(t) = a14t^4 + a13t^3 + a12t^2 + a11t+a10](http://latex.codecogs.com/gif.latex?h3(t\)=a_{34}*t_{0}^{4}+a_{33}*t_{0}^{3}+a_{32}*t_{0}^{2}+a_{31}*t_{0}+a_{30})
+* ![h1(t) = a14t^4 + a13t^3 + a12t^2 + a11t+a10](http://latex.codecogs.com/png.latex?h1(t\)=a_{14}*t_{0}^{4}+a_{13}*t_{0}^{3}+a_{12}*t_{0}^{2}+a_{11}*t_{0}+a_{10})
+* ![h2(t) = a14t^4 + a13t^3 + a12t^2 + a11t+a10](http://latex.codecogs.com/png.latex?h2(t\)=a_{24}*t_{0}^{4}+a_{23}*t_{0}^{3}+a_{22}*t_{0}^{2}+a_{21}*t_{0}+a_{20})
+* ![h3(t) = a14t^4 + a13t^3 + a12t^2 + a11t+a10](http://latex.codecogs.com/png.latex?h3(t\)=a_{34}*t_{0}^{4}+a_{33}*t_{0}^{3}+a_{32}*t_{0}^{2}+a_{31}*t_{0}+a_{30})
 
 Punto inicial (p0)
-* Posición: ![p0 = a14t0^4 + a13t0^3 + a12t0^2 + a11t0 + a10](http://latex.codecogs.com/gif.latex?p0=a_{14}*t_{0}^{4}+a_{13}*t_{0}^{3}+a_{12}*t_{0}^{2}+a_{11}*t_{0}+a_{10})
-* Velocidad: ![v0 = 4*a14t0^3 + 3*a13t0^2 + 2*a12t0 + a11](http://latex.codecogs.com/gif.latex?v0=4*a_{14}*t_{0}^{3}+3*a_{13}*t_{0}^{2}+2*a_{12}*t_{0}+a_{12}*t_{0}+a_{11})
-* Aceleración: ![a0 =4*3*a14t0^2 + 3*2*a13t0+ 2*a12](http://latex.codecogs.com/gif.latex?a0=4*3*a_{14}*t_{0}^{2}+3*2*a_{13}*t_{0}+2*a_{12})
+* Posición: ![p0 = a14t0^4 + a13t0^3 + a12t0^2 + a11t0 + a10](http://latex.codecogs.com/png.latex?p0=a_{14}*t_{0}^{4}+a_{13}*t_{0}^{3}+a_{12}*t_{0}^{2}+a_{11}*t_{0}+a_{10})
+* Velocidad: ![v0 = 4*a14t0^3 + 3*a13t0^2 + 2*a12t0 + a11](http://latex.codecogs.com/png.latex?v0=4*a_{14}*t_{0}^{3}+3*a_{13}*t_{0}^{2}+2*a_{12}*t_{0}+a_{12}*t_{0}+a_{11})
+* Aceleración: ![a0 =4*3*a14t0^2 + 3*2*a13t0+ 2*a12](http://latex.codecogs.com/png.latex?a0=4*3*a_{14}*t_{0}^{2}+3*2*a_{13}*t_{0}+2*a_{12})
 
 Punto de despegue (p1)
-* Posición: ![p1 = a24t1^4+ a23t1^3 + a22t1^2 + a21t1+a20](http://latex.codecogs.com/gif.latex?p1=a_{24}*t_{0}^{4}+a_{23}*t_{0}^{3}+a_{22}*t_{0}^{2}+a_{21}*t_{0}+a_{20}) 
-* Continuidad Posición: ![a14*t1^4 + a13*t1^3+ a12*t1^2 + a11*t1 + a10 = a24* t1^4 + a23*t1^3 + a22*t12 + a21*t1 + a20](http://latex.codecogs.com/gif.latex?a_{14}*t_{1}^{4}+a_{13}*t_{1}^{3}+a_{12}*t_{1}^{2}+a_{11}*t_{1}+a_{10}=a_{24}*t_{1}^{4}+a_{23}*t_{1}^{3}+a_{22}*t_{1}^{2}+a_{21}*t_{1}+a_{20})
-* Continuidad Velocidad: ![4*a14*t1^3 + 3*a13*t1^2 + 2*a12*t1 + a11 = 4*a24*t1^3+ 3*a23*t1^2 + 2*a22 +a21](http://latex.codecogs.com/gif.latex?4*a_{14}*t_{1}^{3}+3*a_{13}*t_{1}^{2}+2*a_{12}*t_{1}+a_{11}=4*a_{24}*t_{1}^{3}+3*a_{23}*t_{1}^{2}+2*a_{22}+a_{21})
-* Continuidad Aceleración: ![12*a14*t1^2 + 6 *a13*t1+ 2*a12 =12*a24 + 6 *a23*t1+ 2*a22](http://latex.codecogs.com/gif.latex?12*a_{14}*t_{1}^{2}+6*a_{13}*t_{1}+2*a_{12}=12*a_{24}+6*a_{23}*t_{1}+2*a_{22})
+* Posición: ![p1 = a24t1^4+ a23t1^3 + a22t1^2 + a21t1+a20](http://latex.codecogs.com/png.latex?p1=a_{24}*t_{1}^{4}+a_{23}*t_{1}^{3}+a_{22}*t_{1}^{2}+a_{21}*t_{1}+a_{20}) 
+* Continuidad Posición: ![a14*t1^4 + a13*t1^3+ a12*t1^2 + a11*t1 + a10 = a24* t1^4 + a23*t1^3 + a22*t12 + a21*t1 + a20](http://latex.codecogs.com/png.latex?a_{14}*t_{1}^{4}+a_{13}*t_{1}^{3}+a_{12}*t_{1}^{2}+a_{11}*t_{1}+a_{10}=a_{24}*t_{1}^{4}+a_{23}*t_{1}^{3}+a_{22}*t_{1}^{2}+a_{21}*t_{1}+a_{20})
+* Continuidad Velocidad: ![4*a14*t1^3 + 3*a13*t1^2 + 2*a12*t1 + a11 = 4*a24*t1^3+ 3*a23*t1^2 + 2*a22 +a21](http://latex.codecogs.com/png.latex?4*a_{14}*t_{1}^{3}+3*a_{13}*t_{1}^{2}+2*a_{12}*t_{1}+a_{11}=4*a_{24}*t_{1}^{3}+3*a_{23}*t_{1}^{2}+2*a_{22}+a_{21})
+* Continuidad Aceleración: ![12*a14*t1^2 + 6 *a13*t1+ 2*a12 =12*a24 + 6 *a23*t1+ 2*a22](http://latex.codecogs.com/png.latex?12*a_{14}*t_{1}^{2}+6*a_{13}*t_{1}+2*a_{12}=12*a_{24}+6*a_{23}*t_{1}+2*a_{22})
 
 Punto extra (p2)
 > La posición debe venir determinada por la curva 2, la aceleración y la velocidad, la marca la propia curva, no el punto en cuestión. El tiempo t2, ha de ser la mitad del tiempo del segundo tramo.
-* Posición: p2 = a24*t2^4 + a23*t2^3 + a22*t2^2 + a21*t2 + a20 
-* Tiempo: t2 = (t3-t1)/2
+
+* Posición: ![p2 = a24t2^4 + a23t2^3 + a22t2^2 + a21t2 + a20](http://latex.codecogs.com/png.latex?p1=a_{24}*t_{2}^{4}+a_{23}*t_{2}^{3}+a_{22}*t_{2}^{2}+a_{21}*t_{2}+a_{20}) 
+* Tiempo: ![t2 = (t3-t1)/2](http://latex.codecogs.com/png.latex?2*t_{2}={t_{3}-t_{1})
 
 Punto de asentamiento (p3)
 * Posición: p3 = a34*t3^4 + a33*t3^3 + a32*t3^2 + a31*t3 + a30
